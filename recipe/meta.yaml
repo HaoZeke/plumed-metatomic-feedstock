@@ -4,7 +4,7 @@
 {% set version = "2.10.0" %}
 {% set git_rev = "1a43afbf71be05a367ee87c68b9eee92b6ece3c0" %}
 
-{% set build = 4 %}
+{% set build = 5 %}
 
 # Use a higher build number for prefered variants, to ensure that they are
 # picked first by conda's solver.
@@ -57,7 +57,7 @@ requirements:
     - liblapack
     - llvm-openmp  # [osx]
     - zlib
-    - libmetatomic-torch >=0.1.12.rc1,<0.2
+    - libmetatomic-torch >=0.1.12.rc2,<0.2
     # always build against the CPU version of libtorch, we can still pick the
     # cuda one at runtime
     - libtorch * cpu*
@@ -65,7 +65,7 @@ requirements:
   run:
     - {{ mpi }}  # [mpi != "nompi"]
     - llvm-openmp  # [osx]
-    - libmetatomic-torch >=0.1.12.rc1,<0.2.0
+    - libmetatomic-torch >=0.1.12.rc2,<0.2.0
     - libmetatensor-torch >=0.9.0.rc5,<0.10.0
     - libmetatensor >=0.2.0.rc3,<0.3.0
 
