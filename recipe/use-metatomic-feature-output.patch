@@ -1,0 +1,22 @@
+diff --git a/src/metatomic/metatomic.cpp b/src/metatomic/metatomic.cpp
+index 0176f704c..16fbd16b8 100644
+--- a/src/metatomic/metatomic.cpp
++++ b/src/metatomic/metatomic.cpp
+@@ -412,7 +412,7 @@ MetatomicPlumedAction::MetatomicPlumedAction(const ActionOptions& ao):
+         this->neighbor_lists_.emplace_back(nl_request, this->getUnits().getLengthString());
+     }
+ 
+-    auto extra_inputs = this->model_.run_method("requested_inputs").toGenericDict();
++    auto extra_inputs = this->model_.run_method("requested_inputs", true).toGenericDict();
+     auto standard_inputs = std::vector<std::string>{};
+     auto custom_inputs = std::vector<std::string>{};
+     for (const auto& item: extra_inputs) {
+@@ -562,7 +562,7 @@ MetatomicPlumedAction::MetatomicPlumedAction(const ActionOptions& ao):
+         requested_variant_opt = requested_variant;
+     }
+ 
+-    this->features_key = metatomic_torch::pick_output("features", outputs, requested_variant_opt);
++    this->features_key = metatomic_torch::pick_output("feature", outputs, requested_variant_opt);
+ 
+     auto output = torch::make_intrusive<metatomic_torch::ModelOutputHolder>();
+     // this output has no quantity or unit to set

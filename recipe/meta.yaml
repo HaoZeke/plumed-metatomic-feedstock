@@ -4,7 +4,7 @@
 {% set version = "2.10.0" %}
 {% set git_rev = "cb63cf45d4a2e6ed6952de64896a19d58497715f" %}
 
-{% set build = 6 %}
+{% set build = 7 %}
 
 # Use a higher build number for prefered variants, to ensure that they are
 # picked first by conda's solver.
@@ -26,6 +26,8 @@ source:
   git_url: https://github.com/lab-cosmo/plumed2.git
   git_rev: {{ git_rev }}
   depth: 1
+  patches:
+    - use-metatomic-feature-output.patch
 
 
 build:
